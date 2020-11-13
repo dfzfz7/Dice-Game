@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -15,14 +16,22 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	 
-		// Set up default users in memory authentication // STATIC USERS
+		// Use methods from UserDetailsService
+		@Autowired	
+		private UserDetailsService userDetailsService;
+			
+		// Define UserDetailsService to get the users and the encoder for passwords
 		@Autowired
 	    public void configureGlobal(AuthenticationManagerBuilder auth) 
 	      throws Exception {
-	        auth.inMemoryAuthentication().withUser("player")
+			
+			auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+	        
+			// Set up default users in memory authentication // STATIC USERS
+			/*auth.inMemoryAuthentication().withUser("player") 
 	          .password(passwordEncoder().encode("player")).roles("PLAYER");
 	        auth.inMemoryAuthentication().withUser("admin")
-	          .password(passwordEncoder().encode("admin")).roles("ADMIN");
+	          .password(passwordEncoder().encode("admin")).roles("ADMIN");*/
 	    }
 	    
 		// Password encoder 
