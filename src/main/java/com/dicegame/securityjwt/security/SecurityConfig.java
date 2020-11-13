@@ -15,7 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	 
-		// Set up default users in memory authentication
+		// Set up default users in memory authentication // STATIC USERS
 		@Autowired
 	    public void configureGlobal(AuthenticationManagerBuilder auth) 
 	      throws Exception {
@@ -36,9 +36,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	 
 	    	http.cors().and().csrf().disable() // Activate default CORS values and disable CSRF
 	    		.authorizeRequests()
-	    		.antMatchers(HttpMethod.POST, "/**").hasAnyRole("ADMIN","PLAYER") // Players and ADMIN can create/post
+	    		/*.antMatchers(HttpMethod.POST, "/**").hasAnyRole("ADMIN","PLAYER") // Players and ADMIN can create/post
 	    		.antMatchers(HttpMethod.PUT, "/**").hasRole("ADMIN") // Only ADMIN can update/put
-	    		.antMatchers(HttpMethod.DELETE, "/**").hasRole("ADMIN") // Only ADMIN can delete
+	    		.antMatchers(HttpMethod.DELETE, "/**").hasRole("ADMIN") // Only ADMIN can delete*/
 	        	.anyRequest().authenticated()
 		        .and().httpBasic();	    	
 	    }
