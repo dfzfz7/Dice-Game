@@ -26,7 +26,7 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 		super(authenticationManager);
 	}
 	
-	// Filter if is a valid JWT Token??? TODO
+	// Extracts token from header and validates
 	@Override
 	protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain)
 			throws IOException, ServletException {
