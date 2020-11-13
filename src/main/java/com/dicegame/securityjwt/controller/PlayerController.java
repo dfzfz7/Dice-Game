@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +26,10 @@ public class PlayerController {
 	// Use of methods from Service
 	@Autowired
 	PlayerServiceImpl playerServiceImpl;
+	
+	// Password encoder
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	// Create player
 	@PostMapping("/players")
@@ -33,6 +38,9 @@ public class PlayerController {
 		if(player.getPlayerName() == null) {
 			player.setPlayerName("Anonymous");
 		}
+		// Encode password
+		player.setPassword(passwordEncoder.encode(player.getPassword()));
+		
 		// If date is null set actual date
 		if(player.getRegDate() == null) {
 			player.setRegDate(new Date(System.currentTimeMillis()));

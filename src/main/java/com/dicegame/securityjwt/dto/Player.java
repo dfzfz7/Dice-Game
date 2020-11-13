@@ -27,6 +27,8 @@ public class Player {
 	@Column(name = "player_name", // Column name in database
 			columnDefinition = "varchar(255) default 'Anonymous'") // Default name if null
 	private String playerName;
+	@Column(name = "password") // Column name in database
+	private String password;
 	@Column(name = "success_rate") // Column name in database
 	private Double successRate;
 	@Temporal(TemporalType.TIMESTAMP)
@@ -43,9 +45,10 @@ public class Player {
 	public Player() {
 	}
 
-	public Player(Long id, String playerName, Date regDate) {
+	public Player(Long id, String playerName, String password, Date regDate) {
 		this.id = id;
 		this.playerName = addName(playerName); 
+		this.password = password;
 		this.successRate = 0.0; // Should be 0 due to players has not played yet
 		this.regDate =  new Date(System.currentTimeMillis());
 	}
@@ -68,6 +71,14 @@ public class Player {
 		this.playerName = playerName;
 	}
 	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public Double getSuccessRate() {
 		return successRate;
 	}

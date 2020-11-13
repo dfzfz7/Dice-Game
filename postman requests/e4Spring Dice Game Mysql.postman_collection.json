@@ -6,13 +6,52 @@
 	},
 	"item": [
 		{
-			"name": "Create player",
+			"name": "Login",
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"playerName\": \"Marcos\"\r\n}",
+					"raw": "{\r\n    \"playerName\" : \"Daniel\",\r\n    \"password\" : \"daniel\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create player",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer  eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2MDUyNzAxMjksImlzcyI6IkRhbmllbCIsInN1YiI6IkRhbmllbCIsImV4cCI6MTYwNjEzNDEyOX0.EnUECPVyO_loPZn1AH8l95QBDYxgq0UzkpxRq4xnJ2uXL9uNCgHdjUvCWbx4RwxsOS9OKwHdggfEc-AqVuDDmQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"playerName\": \"Luis\",\r\n    \"password\": \"luis\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -67,6 +106,16 @@
 		{
 			"name": "Roll the dices",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer  eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2MDUyNzAxMjksImlzcyI6IkRhbmllbCIsInN1YiI6IkRhbmllbCIsImV4cCI6MTYwNjEzNDEyOX0.EnUECPVyO_loPZn1AH8l95QBDYxgq0UzkpxRq4xnJ2uXL9uNCgHdjUvCWbx4RwxsOS9OKwHdggfEc-AqVuDDmQ",
+							"type": "string"
+						}
+					]
+				},
 				"method": "POST",
 				"header": [],
 				"url": {
@@ -88,9 +137,31 @@
 		},
 		{
 			"name": "Get list of players",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer  eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2MDUyNzAxMjksImlzcyI6IkRhbmllbCIsInN1YiI6IkRhbmllbCIsImV4cCI6MTYwNjEzNDEyOX0.EnUECPVyO_loPZn1AH8l95QBDYxgq0UzkpxRq4xnJ2uXL9uNCgHdjUvCWbx4RwxsOS9OKwHdggfEc-AqVuDDmQ",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "http://localhost:8181/api/players",
 					"protocol": "http",
@@ -109,6 +180,16 @@
 		{
 			"name": "Get player list of dice rolls",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer  eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2MDUyNzAxMjksImlzcyI6IkRhbmllbCIsInN1YiI6IkRhbmllbCIsImV4cCI6MTYwNjEzNDEyOX0.EnUECPVyO_loPZn1AH8l95QBDYxgq0UzkpxRq4xnJ2uXL9uNCgHdjUvCWbx4RwxsOS9OKwHdggfEc-AqVuDDmQ",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
@@ -131,6 +212,16 @@
 		{
 			"name": "Get ranking",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer  eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2MDUyNzAxMjksImlzcyI6IkRhbmllbCIsInN1YiI6IkRhbmllbCIsImV4cCI6MTYwNjEzNDEyOX0.EnUECPVyO_loPZn1AH8l95QBDYxgq0UzkpxRq4xnJ2uXL9uNCgHdjUvCWbx4RwxsOS9OKwHdggfEc-AqVuDDmQ",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
@@ -152,6 +243,16 @@
 		{
 			"name": "Get loser",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer  eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2MDUyNzAxMjksImlzcyI6IkRhbmllbCIsInN1YiI6IkRhbmllbCIsImV4cCI6MTYwNjEzNDEyOX0.EnUECPVyO_loPZn1AH8l95QBDYxgq0UzkpxRq4xnJ2uXL9uNCgHdjUvCWbx4RwxsOS9OKwHdggfEc-AqVuDDmQ",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
@@ -174,6 +275,16 @@
 		{
 			"name": "Get winner",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer  eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2MDUyNzAxMjksImlzcyI6IkRhbmllbCIsInN1YiI6IkRhbmllbCIsImV4cCI6MTYwNjEzNDEyOX0.EnUECPVyO_loPZn1AH8l95QBDYxgq0UzkpxRq4xnJ2uXL9uNCgHdjUvCWbx4RwxsOS9OKwHdggfEc-AqVuDDmQ",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"url": {
@@ -196,6 +307,16 @@
 		{
 			"name": "Delete player dice rolls",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer  eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2MDUyNzAxMjksImlzcyI6IkRhbmllbCIsInN1YiI6IkRhbmllbCIsImV4cCI6MTYwNjEzNDEyOX0.EnUECPVyO_loPZn1AH8l95QBDYxgq0UzkpxRq4xnJ2uXL9uNCgHdjUvCWbx4RwxsOS9OKwHdggfEc-AqVuDDmQ",
+							"type": "string"
+						}
+					]
+				},
 				"method": "DELETE",
 				"header": [],
 				"body": {
@@ -227,6 +348,16 @@
 		{
 			"name": "Delete player",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer  eyJhbGciOiJIUzUxMiJ9.eyJpYXQiOjE2MDUyNzAxMjksImlzcyI6IkRhbmllbCIsInN1YiI6IkRhbmllbCIsImV4cCI6MTYwNjEzNDEyOX0.EnUECPVyO_loPZn1AH8l95QBDYxgq0UzkpxRq4xnJ2uXL9uNCgHdjUvCWbx4RwxsOS9OKwHdggfEc-AqVuDDmQ",
+							"type": "string"
+						}
+					]
+				},
 				"method": "DELETE",
 				"header": [],
 				"body": {
